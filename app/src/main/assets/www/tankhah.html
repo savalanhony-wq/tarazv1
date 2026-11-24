@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#16407f">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>تنخواه ماموریت</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/icons.css">
+<link rel="stylesheet" href="css/tankhah.css">
+<script src="js/bridge.js"></script>
+</head>
+<body>
+<div id="app">
+<div class="swbar"><a href="personal.html"><i class="ic ic-wallet"></i> دخل و خرج شخصی</a><a href="tankhah.html" class="on"><i class="ic ic-receipt"></i> تنخواه ماموریت</a></div>
+  <header class="top">
+    <h1>تسویه تنخواه ماموریت</h1>
+    <button id="btnSettings"><i class="ic ic-sliders"></i> تنظیمات و امضاها</button>
+    <button id="btnExport"><i class="ic ic-download"></i> خروجی اکسل</button>
+    <button id="btnImport"><i class="ic ic-upload"></i> ورود از اکسل</button>
+    <button id="btnPrint"><i class="ic ic-print"></i> چاپ فرم تسویه</button>
+    <input type="file" id="fileIn" accept=".xlsx" style="display:none">
+  </header>
+  <div class="layout">
+    <aside>
+      <h2>ماموریت‌ها</h2>
+      <div id="mlist"></div>
+      <button class="pri" id="btnNew" style="width:100%">+ ماموریت جدید</button>
+    </aside>
+    <main id="main"></main>
+  </div>
+</div>
+
+<datalist id="cats"></datalist>
+
+<div class="modal" id="mSet"><div class="box">
+  <h3>تنظیمات فرم</h3>
+  <div class="grid">
+    <label class="f">واحد پول<select id="s_unit"><option>ریال</option><option>تومان</option></select></label>
+    <label class="f">تعداد ردیف هر ستون در هر برگ A4 (ریز هزینه‌ها، ۱۰ تا ۷۰)<input id="s_perCol" type="number" min="10" max="70"></label>
+    <label class="f">تعداد ردیف هر برگ A4 (هزینه‌های بدون فاکتور، ۱۰ تا ۷۰)<input id="s_perNo" type="number" min="10" max="70"></label>
+    <label class="f">نام مدیر پروژه (امضا ۱)<input id="s_sig1"></label>
+    <label class="f">نام مدیر صنعت (امضا ۲)<input id="s_sig2"></label>
+    <label class="f">نام مدیر گروه (امضا ۳)<input id="s_sig3"></label>
+  </div>
+  <div class="row"><button class="pri" id="setOk">ذخیره</button><button id="setCancel">بستن</button></div>
+  <p class="hint" style="text-align:center">نسخه <span data-ver></span></p>
+</div></div>
+
+<div class="modal" id="mImp"><div class="box">
+  <h3>ورود از اکسل</h3>
+  <p id="impInfo"></p>
+  <div class="row">
+    <button class="pri" id="impAdd">افزودن به داده‌های فعلی</button>
+    <button class="danger" id="impRep">جایگزینی همه داده‌ها</button>
+    <button id="impCancel">انصراف</button>
+  </div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+<div id="printArea"></div>
+<script src="js/version.js"></script>
+<script src="js/xlsx.js"></script>
+<script src="js/tankhah.js"></script>
+</body>
+</html>

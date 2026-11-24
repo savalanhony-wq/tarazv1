@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'mali.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'mali.app'
+        minSdk 21          // اندروید ۵.۰ به بالا
+        targetSdk 34
+        versionCode 14050903
+        versionName '14050903'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('mali.jks')
+            storePassword 'malimali'
+            keyAlias 'mali'
+            keyPassword 'malimali'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

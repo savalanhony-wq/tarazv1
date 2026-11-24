@@ -1,0 +1,133 @@
+/* ==========================================================================
+   theme.css — سیستم طراحی مشترک «تراز»
+   لایه‌ها: ۱) توکن‌های پایه (primitive)  ۲) توکن‌های معنایی (semantic)  ۳) مقیاس‌ها  ۴) کامپوننت‌ها
+   یک رنگ برند (آبی) در ۱۱ پله + خاکستری‌های هم‌خانواده. مثبت/منفی/هشدار فقط با آیکون، علامت (+/−)،
+   وزن و روشنایی تفکیک می‌شوند. هیچ رنگ خامی خارج از این فایل نوشته نمی‌شود.
+   ========================================================================== */
+:root{
+  /* ۱) پایه: تک‌هیو برند */
+  --b50:#f3f7fc;--b100:#e6eef9;--b200:#cfdef3;--b300:#a8c4ea;--b400:#7aa5df;
+  --b500:#4a85d0;--b600:#2d68bb;--b700:#1d52a0;--b800:#16407f;--b900:#0f2d5c;--b950:#0b2447;
+  --white:#fff;--ink:#14233d;--ink-soft:#5f6f8a;--hairline:#dbe3ef;--hairline-soft:#e9eef6;--canvas:#f3f6fb;
+  --on-brand:#fff;--on-brand-1:rgba(255,255,255,.12);--on-brand-2:rgba(255,255,255,.22);--on-brand-3:rgba(255,255,255,.5);
+  --print-ink:#000;--print-fill:#f0f0f0;--print-head:#e6e6e6;--print-mut:#444;
+
+  /* ۲) معنایی */
+  --bg:var(--canvas);--surface:var(--white);--surface-2:var(--b50);--line:var(--hairline);--line-soft:var(--hairline-soft);
+  --txt:var(--ink);--mut:var(--ink-soft);--focus:var(--b500);
+  --pri:var(--b800);--pri-hover:var(--b900);--pri2:var(--b100);--accent:var(--b600);
+  --scrim:rgba(11,36,71,.55);
+
+  /* ۳) مقیاس‌ها */
+  --r-sm:8px;--r-md:12px;--r-lg:16px;--r-pill:999px;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;
+  --fs-xs:11px;--fs-sm:12px;--fs-base:13px;--fs-md:14px;--fs-lg:16px;--fs-xl:20px;--fs-2xl:28px;
+  --lh:1.55;--tap:40px;--tap-lg:48px;
+  --sh-1:0 1px 2px rgba(15,45,92,.06);
+  --sh-2:0 1px 2px rgba(15,45,92,.06),0 6px 18px rgba(15,45,92,.06);
+  --sh-3:0 20px 50px rgba(11,36,71,.35);
+  --shadow:var(--sh-2);
+  --z-sticky:20;--z-nav:30;--z-modal:60;--z-toast:99;--z-bar:100;--z-lock:500;
+  --dur:.15s;--ease:ease;
+  --font:system-ui,"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Naskh Arabic",Arial,sans-serif;
+}
+
+/* ---------- پایه ---------- */
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);background:var(--bg);color:var(--txt);font-size:var(--fs-md);line-height:var(--lh);
+  font-variant-numeric:tabular-nums;overflow-wrap:anywhere;word-break:break-word}
+input,select,textarea,button{overflow-wrap:normal;word-break:normal}
+svg{max-width:100%;height:auto;display:block}
+:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- آیکون‌های خطی (ماسک CSS؛ رنگ = رنگ متن) ---------- */
+.ic{display:inline-block;width:1.15em;height:1.15em;flex:none;vertical-align:-.2em;background-color:currentColor;
+  -webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+
+/* ---------- کارت ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-3);box-shadow:var(--shadow)}
+.card h3{margin:0 0 var(--sp-3);font-size:15px;display:flex;align-items:center;gap:var(--sp-2);color:var(--b900)}
+.card h3 .ic{color:var(--b600)}
+.card h3 small{color:var(--mut);font-weight:normal;font-size:var(--fs-xs);margin-right:auto}
+
+/* ---------- دکمه ---------- */
+button{font-family:inherit;font-size:13px;line-height:1.2;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:var(--tap);padding:8px 13px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);color:var(--txt);
+  cursor:pointer;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+button:hover{background:var(--b50);border-color:var(--b300)}
+button:active{background:var(--b100)}
+button.pri,button.inc{background:var(--b800);border-color:var(--b800);color:var(--on-brand)}
+button.pri:hover,button.inc:hover{background:var(--b900);border-color:var(--b900)}
+button.exp{background:var(--b950);border-color:var(--b950);color:var(--on-brand)}
+button.exp:hover{background:var(--b900)}
+button.danger,button.dg{color:var(--b900);border-color:var(--b300)}
+button:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- فرم ---------- */
+input,select,textarea{font-family:inherit;font-size:var(--fs-md);color:var(--txt);min-height:40px;padding:8px 10px;
+  border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);max-width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--b500)}
+input[type=checkbox]{min-height:0;width:auto;padding:0;accent-color:var(--b800)}
+input[type=file]{min-height:0;padding:0;border:0}
+::placeholder{color:#8c9ab3}
+
+/* ---------- ابزارهای کوچک ---------- */
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center;margin-top:10px}
+.hint{color:var(--mut);font-size:var(--fs-sm)}
+.empty{text-align:center;color:var(--mut);padding:24px 8px}
+.good{color:var(--b700)!important}.bad{color:var(--b950)!important;font-weight:bold}.warn{color:var(--b800)!important}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--b100);color:var(--b800);border-radius:var(--r-pill);padding:3px 10px;font-size:var(--fs-sm);margin:2px}
+.chip.e{background:var(--b800);color:var(--on-brand)}.chip.i{background:var(--b200);color:var(--b900)}.chip.w{background:var(--surface);color:var(--b800);border:1px solid var(--b300)}
+
+/* ---------- هشدار (یک رنگ؛ شدت با روشنایی و آیکون) ---------- */
+.alert{display:flex;gap:8px;align-items:flex-start;border-radius:var(--r-sm);padding:9px 11px;margin-bottom:var(--sp-2);font-size:13px;
+  background:var(--b50);border:1px solid var(--b200);border-right:4px solid var(--b500);color:var(--b900)}
+.alert .ic{margin-top:3px}
+.alert.g{border-right-color:var(--b400)}
+.alert.y{background:var(--b100);border-right-color:var(--b800)}
+.alert.r{background:var(--b900);border-color:var(--b900);border-right-color:var(--b300);color:var(--on-brand)}
+
+/* ---------- نوار پیشرفت ---------- */
+.bar{height:8px;background:var(--b100);border-radius:5px;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;background:var(--b600);border-radius:5px}
+.bar>i.ok{background:var(--b500)}
+.bar>i.over{background:repeating-linear-gradient(135deg,var(--b950) 0 6px,var(--b700) 6px 12px)}
+
+/* ---------- راهنمای نمودار ---------- */
+.sw{display:inline-block;width:16px;height:0;border-top:2.6px solid;vertical-align:middle;margin-left:4px}
+.sw.inc{border-color:var(--b800)}.sw.exp{border-color:var(--b500);border-top-style:dashed}.sw.bud{border-color:var(--b400);border-top-style:dotted}
+.sw.b-inc,.sw.b-exp{width:10px;height:10px;border:0;border-radius:3px}
+.sw.b-inc{background:var(--b800)}.sw.b-exp{background:var(--b300)}
+.chart text{font-family:var(--font);font-size:10px;fill:var(--mut)}
+
+/* ---------- پنجره ---------- */
+.modal{position:fixed;top:0;right:0;bottom:0;left:0;background:var(--scrim);display:none;align-items:flex-start;justify-content:center;z-index:var(--z-modal);padding:var(--sp-3);overflow:auto}
+.modal.show{display:flex}
+.modal .box{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);width:760px;max-width:100%;margin:auto;box-shadow:var(--sh-3)}
+.modal h3{margin:0 0 var(--sp-2);color:var(--b900)}
+
+/* ---------- پیام کوتاه ---------- */
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--b950);color:var(--on-brand);padding:9px 16px;border-radius:var(--r-sm);display:none;z-index:var(--z-toast);font-size:13px;box-shadow:var(--shadow);max-width:92vw}
+
+/* ---------- نوار جابه‌جایی بین دو بخش ---------- */
+.swbar{position:sticky;top:0;z-index:var(--z-bar);display:flex;gap:4px;background:var(--b950);padding:4px;height:44px}
+.swbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--b300);text-decoration:none;border-radius:var(--r-sm);font-size:13px}
+.swbar a.on{background:var(--surface);color:var(--b800);font-weight:bold}
+
+/* ---------- سربرگ صفحه ---------- */
+header.top{background:linear-gradient(135deg,var(--b800),var(--b700));color:var(--on-brand)}
+
+/* ---------- چاپ (مشترک) ---------- */
+#printArea{display:none}
+.pf{font-family:var(--font);color:var(--print-ink);font-size:11pt}
+.pf h1{text-align:center;font-size:15pt;margin:0 0 4px}
+.pf .sub{text-align:center;margin-bottom:10px;font-size:10.5pt}
+.pf table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.pf th,.pf td{border:1px solid var(--print-ink);padding:4px 6px;font-size:10pt}
+.pf th{background:var(--print-head)}
+.pf td.n{text-align:left;white-space:nowrap}.pf td.c{text-align:center}
+.pf tfoot td{font-weight:bold;background:var(--print-fill)}
+.pf tr{page-break-inside:avoid}
+@media print{@page{size:A4;margin:12mm}body{background:var(--surface);padding:0}#app,.toast,.modal{display:none!important}#printArea{display:block}}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#16407f">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>دخل و خرج شخصی</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/icons.css">
+<link rel="stylesheet" href="css/personal.css">
+<script src="js/bridge.js"></script>
+</head>
+<body>
+<div id="app">
+<div class="swbar"><a href="personal.html" class="on"><i class="ic ic-wallet"></i> دخل و خرج شخصی</a><a href="tankhah.html"><i class="ic ic-receipt"></i> تنخواه ماموریت</a></div>
+<header class="top"><div class="hrow">
+  <h1><i class="ic ic-wallet"></i> دخل و خرج</h1>
+  <div class="mnav"><button id="mprev" title="ماه قبل"><i class="ic ic-chev-r"></i></button><span id="mlabel"></span><button id="mnext" title="ماه بعد"><i class="ic ic-chev-l"></i></button><button id="mtoday" class="today">امروز</button></div>
+</div></header>
+<main id="view"></main>
+<nav class="tabs" id="tabs">
+  <button data-tab="dash"><span><i class="ic ic-dash"></i></span>خلاصه</button>
+  <button data-tab="inc"><span><i class="ic ic-income"></i></span>درآمد</button>
+  <button data-tab="exp"><span><i class="ic ic-receipt"></i></span>هزینه</button>
+  <button data-tab="rules"><span><i class="ic ic-repeat"></i></span>اقساط</button>
+  <button data-tab="year"><span><i class="ic ic-calendar"></i></span>سالانه</button>
+  <button data-tab="set"><span><i class="ic ic-sliders"></i></span>تنظیمات</button>
+</nav>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+<input type="file" id="impFile" accept=".xlsx,.csv,.txt,text/csv" style="display:none">
+<div id="printArea"></div>
+<input type="file" id="fileIn" accept=".json,application/json" style="display:none">
+<script src="js/version.js"></script>
+<script src="js/xlsx.js"></script>
+<script src="js/personal.js"></script>
+</body>
+</html>

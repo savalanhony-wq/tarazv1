@@ -1,0 +1,124 @@
+/* ==========================================================================
+   tankhah.css — بخش «تسویه تنخواه ماموریت» (چیدمان؛ رنگ و کامپوننت‌ها از theme.css)
+   ========================================================================== */
+header.top{padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+header.top h1{font-size:17px;margin:0 0 0 auto}
+header.top button{border-color:var(--on-brand-3);background:var(--on-brand-1);color:var(--on-brand)}
+header.top button:hover{background:var(--on-brand-2);border-color:var(--on-brand-3)}
+
+.layout{display:flex;gap:14px;padding:14px;align-items:flex-start}
+aside{width:260px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:10px;box-shadow:var(--shadow)}
+aside h2{font-size:14px;margin:4px 4px 10px;color:var(--b900)}
+.mi{border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px;margin-bottom:8px;cursor:pointer}
+.mi:hover{background:var(--b50)}
+.mi.act{border-color:var(--b800);background:var(--b100)}
+.mi b{display:block;margin-bottom:3px}
+.mi small{color:var(--mut)}
+main{flex:1;min-width:0}
+.card{margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+label.f{display:block;font-size:var(--fs-sm);color:var(--mut)}
+label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:3px}
+.wrap{overflow-x:auto}
+
+/* ---------- جدول هزینه‌ها ---------- */
+table.ex{width:100%;border-collapse:collapse;min-width:420px}
+table.ex th{background:var(--b100);color:var(--b900);font-size:var(--fs-sm);padding:7px 4px;border:1px solid var(--line);white-space:nowrap}
+table.ex td{border:1px solid var(--line);padding:0}
+table.ex td.idx{text-align:center;color:var(--mut);width:34px}
+table.ex input{width:100%;border:0;border-radius:0;min-height:0;padding:8px 6px;font-size:13px;background:transparent}
+table.ex input:focus{outline:2px solid var(--b500);outline-offset:-2px;background:var(--b50)}
+table.ex input[data-ef=amount]{text-align:left;direction:ltr;font-weight:bold}
+table.ex td.del,table.ex td.ins{width:34px;text-align:center}
+table.ex td.ins button{display:flex;width:100%;min-height:26px;padding:2px 0;font-size:11px;direction:ltr}
+.x{border:0;background:none;color:var(--b700);padding:4px 8px;min-height:0}
+.sumrow{background:var(--b50)}
+
+/* ---------- جدول‌های محل/بدون فاکتور ---------- */
+table.tr{width:100%;border-collapse:collapse}
+table.tr th{background:var(--b100);color:var(--b900);font-size:var(--fs-sm);padding:7px 4px;border:1px solid var(--line)}
+table.tr td{border:1px solid var(--line);padding:0}
+table.tr input{width:100%;border:0;border-radius:0;min-height:0;padding:8px 6px;font-size:13px;background:transparent}
+table.tr input:focus{outline:2px solid var(--b500);outline-offset:-2px;background:var(--b50)}
+table.tr input[data-lf=from],table.tr input[data-lf=to],table.tr input[data-lf=date]{direction:ltr;text-align:center}
+table.tr input[data-lf=amount]{direction:ltr;text-align:left;font-weight:bold}
+table.tr td.del{width:34px;text-align:center}
+
+/* ---------- خلاصه و تسویه ---------- */
+.sumgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+table.sm{width:100%;border-collapse:collapse}
+table.sm td{padding:6px 8px;border-bottom:1px solid var(--line-soft)}
+table.sm td:last-child{text-align:left;font-weight:bold}
+.res{font-size:15px;padding:10px 12px;border-radius:var(--r-sm);margin-top:8px;font-weight:bold}
+.res.ok{background:var(--b50);color:var(--b800);border:1px solid var(--b200)}
+.res.bad{background:var(--b900);color:var(--on-brand)}
+.empty{padding:50px 10px}
+.lay2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px;align-items:start;margin-bottom:14px}
+.lay2>.card{margin-bottom:0}
+.stackcol{display:flex;flex-direction:column;gap:14px}
+.stackcol .card{margin-bottom:0}
+.stackcol .grid{grid-template-columns:1fr}
+.stack>div{margin-bottom:14px}
+.li{display:flex;gap:6px;margin-bottom:6px}
+.li input{flex:1}
+.modal{align-items:center}
+.modal .box{width:520px;max-height:92vh;overflow:auto}
+.toast{bottom:18px}
+.stackcol,.card,main,.lay2>*{min-width:0}
+
+/* ---------- فرم چاپی تسویه ---------- */
+@media print{.pf+.pf{page-break-before:always}}
+.pf th,.pf td{vertical-align:top}
+.pf table.dbl th,.pf table.dbl td{font-size:9.5pt;padding:3px 5px}
+.pf .sub2{text-align:center;font-weight:bold;font-size:11pt;margin:0 0 6px;height:8mm;line-height:8mm}
+.pf table.dbl.det{margin:0}
+.pf table.dbl.det th{font-size:var(--fs);padding:0 4px;height:6mm;line-height:1}
+.pf table.dbl.det td{font-size:var(--fs);padding:0 4px;height:var(--rh);line-height:1;white-space:nowrap;overflow:hidden}
+.pf table.dbl.det tr{height:var(--rh)}
+.pf table.dbl td:nth-child(4),.pf table.dbl th:nth-child(4){border-right:2.5px solid var(--print-ink)}
+.pf thead{display:table-header-group}
+.pf .info td{border:1px solid var(--print-ink)}
+.pf .info td.k{background:var(--print-fill);width:22%;font-weight:bold}
+.pf .tot td{font-weight:bold;background:var(--print-fill)}
+.pf .sign{display:flex;gap:10px;margin-top:18px;page-break-inside:avoid}
+.pf .sign div{flex:1;border:1px solid var(--print-ink);height:34mm;padding:6px;text-align:center;font-size:10.5pt}
+.pf .sign b{display:block;margin-bottom:4px}
+.pf .sign span{display:block;margin-top:2px;font-size:10pt}
+.pf .sign i{display:block;margin-top:14mm;font-style:normal;font-size:9pt;color:var(--print-mut)}
+.pf .two{display:flex;gap:12px;align-items:flex-start;page-break-inside:avoid}
+.pf .two>div{flex:1}
+
+/* ---------- ریسپانسیو ---------- */
+@media(max-width:980px){.lay2{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:800px){.layout{flex-direction:column}aside{width:100%}.sumgrid{grid-template-columns:1fr}}
+@media(max-width:700px){
+ .layout{align-items:stretch;padding:8px;gap:10px}
+ aside,main{width:100%}
+ aside{padding:8px}
+ header.top{padding:8px 10px}
+ header.top h1{flex:1 0 100%;margin:0 0 2px;font-size:16px}
+ header.top button{flex:1 1 calc(50% - 8px);padding:9px 6px;font-size:12.5px}
+ #mlist{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
+ .mi{margin:0;padding:7px 8px}.mi small{font-size:var(--fs-xs);line-height:1.5}
+ .card{padding:11px}
+ .wrap{overflow-x:visible}
+ table.ex{min-width:0;table-layout:fixed}
+ table.ex th:nth-child(1){width:28px}table.ex th:nth-child(3){width:92px}table.ex th:nth-child(4){width:30px}table.ex th:nth-child(1){width:24px}table.ex th:nth-child(4),table.ex th:nth-child(5){width:28px}
+ table.ex input{padding:10px 4px}
+ table.ex td{overflow:hidden}
+ table.tr,table.tr tbody,table.tr tfoot{display:block;width:100%}
+ table.tr thead{display:none}
+ table.tr tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 36px;gap:6px;border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px;background:var(--surface)}
+ table.tr td{display:block;border:0;padding:0;width:auto!important;min-width:0}
+ table.tr tbody td::before{content:attr(data-l);display:block;font-size:var(--fs-xs);color:var(--mut);margin-bottom:2px}
+ table.tr td.del{align-self:end;text-align:center}table.tr td.del::before{display:none}
+ table.tr input{border:1px solid var(--line);border-radius:7px;background:var(--surface);padding:10px 8px}
+ table.trips td:nth-child(1){grid-column:1/-1}
+ table.noinv td:first-child{display:none}
+ table.noinv td:nth-child(2){grid-column:1/-1}
+ table.tr tfoot tr{display:flex;justify-content:space-between;align-items:center;padding:6px 4px}
+ table.tr tfoot td{display:block;border:0;padding:0!important}table.tr tfoot td:empty{display:none}
+ .modal .box{padding:14px}
+}
+.pf table.noinvp th,.pf table.noinvp td{font-size:var(--fs);padding:0 4px;height:var(--rh);line-height:1.2;overflow:hidden}
+.pf table.noinvp td:nth-child(2){white-space:nowrap}

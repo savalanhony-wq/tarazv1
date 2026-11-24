@@ -1,0 +1,21 @@
+ساختار پروژه (نسخه 14050830)
+=============================
+app/src/main/
+  java/mali/app/MainActivity.java   پوسته اندروید (WebView + پل ذخیره فایل/چاپ/انتخاب فایل)
+  assets/www/                       خود برنامه (بدون اینترنت کار می‌کند)
+    index.html                      راه‌انداز: آخرین بخش استفاده‌شده را باز می‌کند
+    personal.html                   بخش «دخل و خرج شخصی»
+    tankhah.html                    بخش «تسویه تنخواه ماموریت»
+    css/theme.css                   سیستم طراحی مشترک: توکن‌های رنگ (یک رنگ آبی در ۱۱ پله)، دکمه، فرم، کارت، هشدار، پنجره...
+    css/icons.css                   آیکون‌های خطی (SVG + ماسک CSS)
+    css/personal.css, tankhah.css   فقط چیدمان هر بخش
+    js/version.js                   تنها جای شماره نسخه
+    js/xlsx.js                      کتابخانه مشترک اکسل و تبدیل تاریخ
+    js/bridge.js                    پل اندروید (ذخیره فایل، چاپ)
+    js/personal.js, tankhah.js      منطق هر بخش
+  res/                              آیکون و نام برنامه
+app/build.gradle                    versionCode/versionName
+.github/workflows/build.yml         ساخت خودکار APK در GitHub
+
+تغییر رنگ کل برنامه: فقط پله‌های --b50 تا --b950 در css/theme.css.
+تغییر شماره نسخه: js/version.js و app/build.gradle.
